@@ -4,8 +4,6 @@
 public class Main {
   /**
    * Runs the sample transactions and verifies account management output.
-   *
-   * @param args command-line arguments
    */
   public static void main(String[] args) {
     BankAccount acc1 = new SavingsAccount("Test0");

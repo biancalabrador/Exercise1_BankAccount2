@@ -18,6 +18,6 @@ public class Transaction {
 
   @Override
   public String toString() {
-    return "Transaction [type=" + type + ", amount=" + amount + ", time_stamp=" + time_stamp.format(TIME_FORMAT) + "]";
+    return "\nTransaction [type=" + type + ", amount=" + amount + ", time_stamp=" + time_stamp.format(TIME_FORMAT) + "]";
   }
 }
