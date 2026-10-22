@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/** Represents a transaction with its type, amount, and creation time. */
 public class Transaction {
   private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
@@ -8,6 +9,7 @@ public class Transaction {
   private final double amount;
   private final LocalDateTime time_stamp;
 
+  /** When was the transaction created */
   public Transaction(String type, double amount) {
     this.type = type;
     this.amount = amount;

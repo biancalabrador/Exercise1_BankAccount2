@@ -2,17 +2,22 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+/** Manages bank accounts and assigns each account a unique identifier. */
 public class BankAccountManager implements Bank {
+  /** Max accounts manager can store. */
   private static final int MAX_ACCOUNTS = 100;
 
+  /** Accounts indexed. */
   private final Map<Integer, BankAccount> accounts;
   private int id;
 
+  /** Empty account manager. */
   public BankAccountManager() {
     accounts = new HashMap<>();
     id = 0;
   }
 
+  /** Adds acc unless null or acc limit has been reached. */
   @Override
   public void addAccount(BankAccount account) {
     if (account == null) {
@@ -28,11 +33,13 @@ public class BankAccountManager implements Bank {
     id++;
   }
 
+  /** Returns acc associated with identifier. */
   @Override
   public BankAccount getAccount(int id) {
     return accounts.get(id);
   }
 
+  /** Prints identifier, owner, and balance. */
   public void listAccounts() {
     for (int accountId = 0; accountId < id; accountId++) {
       BankAccount account = accounts.get(accountId);
