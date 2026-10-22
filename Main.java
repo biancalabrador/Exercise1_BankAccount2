@@ -1,0 +1,19 @@
+/**
+ * Runs a sample sequence of bank account operations.
+ */
+public class Main {
+  public static void main(String[] args) {
+    BankAccount acc1 = new SavingsAccount("Test0");
+    acc1.deposit(1000.125);
+    acc1.deposit(0);
+    acc1.deposit(-500);
+    acc1.withdraw(500);
+    acc1.withdraw(1500);
+    acc1.withdraw(-100);
+    acc1.freezeAccount();
+    acc1.deposit(11500);
+    acc1.withdraw(500);
+    acc1.unfreezeAccount();
+    acc1.withdraw(100);
+  }
+}
