@@ -1,6 +1,3 @@
-/**
- * Represents a bank account that stores its owner's name.
- */
 public class SavingsAccount extends BankAccount {
   private final String ownerName;
 
@@ -9,7 +6,7 @@ public class SavingsAccount extends BankAccount {
     this.ownerName = ownerName;
     System.out.println("Account Owner: " + ownerName + ".");
   }
-
+  
   public String getOwnerName() {
     return ownerName;
   }

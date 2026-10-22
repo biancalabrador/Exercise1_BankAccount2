@@ -1,13 +1,19 @@
-/**
- * Represents a bank account with deposit, withdrawal, and freeze operations.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class BankAccount {
   private double balance;
   private final String owner;
   private boolean frozen;
+  private final List<Transaction> transactionHistory;
+
+  public BankAccount() {
+    this("");
+  }
 
   public BankAccount(String owner) {
     this.owner = owner;
+    this.transactionHistory = new ArrayList<>();
   }
 
   public void deposit(double amount) {
@@ -17,16 +23,14 @@ public class BankAccount {
     }
 
     System.out.printf("Amount deposited: %.2f%n", amount);
-    if (amount > 0) {
-      balance += amount;
-
-      System.out.printf("Current balance: %.2f%n", balance);
-    }
-
     if (!Double.isFinite(amount) || amount <= 0) {
       System.out.println("Invalid amount. Must be greater than 0");
       return;
     }
+
+    balance += amount;
+    transactionHistory.add(new Transaction("Deposit", amount));
+    System.out.printf("Current balance: %.2f%n", balance);
   }
 
   public void withdraw(double amount) {
@@ -35,16 +39,22 @@ public class BankAccount {
       return;
     }
     System.out.printf("Amount withdrawn: %.2f%n", amount);
-    if (amount > 0 && amount <= balance) {
-      balance -= amount;
-    } else if (amount > balance) {
-      System.out.printf("Insufficient balance. Current balance: %.2f%n", balance);
-      return;
-    } else {
+    if (!Double.isFinite(amount) || amount <= 0) {
       System.out.println("Invalid amount. Must be greater than 0");
       return;
     }
+    if (amount > balance) {
+      System.out.printf("Insufficient balance. Current balance: %.2f%n", balance);
+      return;
+    }
+
+    balance -= amount;
+    transactionHistory.add(new Transaction("Withdraw", amount));
     System.out.printf("Current balance: %.2f%n", balance);
+  }
+
+  public List<Transaction> getTransactionHistory() {
+    return transactionHistory;
   }
 
   public double getBalance() {
